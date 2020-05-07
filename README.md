@@ -246,6 +246,9 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
+Lorsqu'on affiche l'état de la configuration on peut voir les valeures définies plus haut en suivant le tuto. 
+On a donc 2 policies différentes, la policy 20 qui est appliquée aux 2 routeurs et la policy 10 qui est appliquée seulement à R2.
+TODO: expliquer pk (voir cours pour comprendre je pense)
 
 **Policy R1:**
 
@@ -276,6 +279,8 @@ Source:
 ---
 
 **Réponse :**  
+on voit que les 2 routeurs partagent la même preshared key qui s'appelle cisco-1.
+TODO: expliquer pk (voir cours je pense)
 
 **Key R1:**
 
@@ -381,6 +386,9 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
+Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi ça sert
+
 
 ---
 
