@@ -277,11 +277,11 @@ Source:
 **Réponse :**  
 **Key R1:**
 
-![](../../../../HEIG-VD/S4/SRX/labo/lab04/images/screens/r1_key.png)
+![](./images/screens/r1_key.png)
 
 **Key R2:**
 
-![](../../../../HEIG-VD/S4/SRX/labo/lab04/images/screens/r2_key.png)
+![](./images/screens/r2_key.png)
 
 
 
@@ -379,6 +379,18 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+
+* Warning! Lifetime value of 2560 KB is lower than the recommended optimum value of 102400 KB
+* Warning! Lifetime value of 300 sec is lower than the recommended optimum value of 900 sec
+
+![](./images/screens/WS_secure_ping.png)
+
+![](./images/screens/debug_secure_ping.png)
+
+![](./images/screens/cmd_secure_ping.png)
+
+
+
 Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
 Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi ça sert
 
