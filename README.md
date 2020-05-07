@@ -347,6 +347,9 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
+Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi ça sert
+
 
 ---
 
