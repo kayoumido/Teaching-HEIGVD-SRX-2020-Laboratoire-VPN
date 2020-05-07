@@ -30,8 +30,8 @@ Dans ce travail de laboratoire, vous allez configurer des routeurs Cisco émulé
 -	Capture Sniffer avec filtres précis sur la communication à épier
 -	Activation du mode « debug » pour certaines fonctions du routeur
 -	Observation des protocoles IPSec
- 
- 
+
+
 ## Matériel
 
 La manière la plus simple de faire ce laboratoire est dans les machines des salles de labo. Le logiciel d'émulation c'est eve-ng. Vous trouverez un [guide très condensé](files/Fonctionnement_EVE-NG.pdf) pour l'utilisation de eve-ng ici.
@@ -108,7 +108,7 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 
 ---
 
-**Réponse :**  
+**Réponse :**  Nous n'avons rencontré aucun problème.
 
 ---
 
@@ -145,7 +145,9 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 
 ---
 
-**Réponse :**  
+**Réponse :**  Oui.
+
+Les pings entre R2 et VPC aurait pu ne pas fonctionner étant donnée que la station n'avait pas reçu d'adresse. Nous avons corrigé ce problème avant d'effectué nos tests en faisant un `ip dhcp`.
 
 ---
 
@@ -170,6 +172,10 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 
 **Screenshots :**  
 
+![](./images/screens/WS_ping.png)
+
+![](./images/screens/eve_ping.png)
+
 ---
 
 ## Configuration VPN LAN 2 LAN
@@ -192,7 +198,7 @@ Sur le routeur R1 nous activons un « proposal » IKE. Il s’agit de la configu
 
 | Element          | Value                                                                                                        |
 |------------------|----------------------------------------------------------------------------------------------------------------------|
-| Encryption       | AES 256 bits    
+| Encryption       | AES 256 bits    |
 | Signature        | Basée sur SHA-1                                                                                                      |
 | Authentification | Preshared Key                                                                                                        |
 | Diffie-Hellman   | avec des nombres premiers sur 1536 bits                                                                              |
@@ -241,6 +247,27 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 **Réponse :**  
 
+**Policy R1:**
+
+![](./images/screens/r1_isakmp_policy.png)
+
+**Policy R2:**
+
+![](./images/screens/r2_isakmp_policy.png)
+
+L'algorithme de hashage `md5` étant cassé, il est plutôt recommandé d'utiliser un algorithme `sha`. 
+
+Le chiffrement par bloc `3DES` est un algorithme historique dont la sécurité est toujours acceptable aujourd'hui mais il est plutôt recommendé d'utilisé d'autre algorithme tels qu'`AES`.
+
+L'utilisation de l'algorithme étant une bonne chose, il y a un tout de même un problème avec le choix du groupe `Diffie-Hellman`. Le groupe `5` ne fournisse pas un bon niveau de sécurité. De nos jour, le groupe minimum recommendé est le `14`.
+
+La policy avec la plus haute priorité du routeur `R2`, c-à-d la policy utilisant l'algorithme `3DES`, ne sera jamais utilisé lors d'une communication avec le routeur `R1` car celui-ci n'a pas de policy utilisant l'algorithme `3DES`.
+
+Source: 
+[Recomendation des algorithmes](https://www.keylength.com/fr/3/)
+
+[Groupe Diffie-Hellman](https://community.cisco.com/t5/security-documents/diffie-hellman-groups/ta-p/3147010)
+
 ---
 
 
@@ -249,6 +276,18 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
+
+**Key R1:**
+
+![](../../../../HEIG-VD/S4/SRX/labo/lab04/images/screens/r1_key.png)
+
+**Key R2:**
+
+![](../../../../HEIG-VD/S4/SRX/labo/lab04/images/screens/r2_key.png)
+
+
+
+On peut voir que la clé *pre-share* utilisé pour l'authentification est `cisco-1`. Cet clé est beaucoup trop petite et trop simple. Il est donc très facile de la casser. 
 
 ---
 
