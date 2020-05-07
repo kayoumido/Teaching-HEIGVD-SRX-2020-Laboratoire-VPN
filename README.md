@@ -275,9 +275,6 @@ Source:
 ---
 
 **Réponse :**  
-on voit que les 2 routeurs partagent la même preshared key qui s'appelle cisco-1.
-TODO: expliquer pk (voir cours je pense)
-
 **Key R1:**
 
 ![](../../../../HEIG-VD/S4/SRX/labo/lab04/images/screens/r1_key.png)
