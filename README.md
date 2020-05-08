@@ -260,7 +260,7 @@ L'algorithme de hashage `md5` étant cassé, il est plutôt recommandé d'utilis
 
 Le chiffrement par bloc `3DES` est un algorithme historique dont la sécurité est toujours acceptable aujourd'hui mais il est plutôt recommandé d'utiliser d'autres algorithmes tels qu'`AES`.
 
-L'utilisation de l'algorithme étant une bonne chose, il y a tout de même un problème avec le choix du groupe `Diffie-Hellman`. Le groupe `5` ne fournis pas un bon niveau de sécurité. De nos jour, le groupe minimum recommandé est le `14`.
+L'utilisation de l'algorithme `AES` étant une bonne chose, il y a tout de même un problème avec le choix du groupe `Diffie-Hellman`. Le groupe `5` ne fournis pas un bon niveau de sécurité. De nos jour, le groupe minimum recommandé est le `14`.
 
 La policy avec la plus haute priorité du routeur `R2`, c-à-d la policy utilisant l'algorithme `3DES`, ne sera jamais utilisé lors d'une communication avec le routeur `R1` car celui-ci n'a pas de policy utilisant l'algorithme `3DES`.
 
