@@ -392,7 +392,7 @@ Nous avons rencontré les warnings suivant:
 
 ![](./images/screens/debug_secure_ping.png)
 
-Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait optimale.
+Lorsque nous avons effectué les pings de la station VPC (172.17.1.100) vers le loopback 1 (172.16.1.1), nous pouvons voir des paquets `ISAKMP` transité sur le routeur R2. On peut déduire que ces paquets sont les pings que nous avons effectué car sur le loopback 1, nous voyons les pings arrivés en clair.
 
 ---
 
