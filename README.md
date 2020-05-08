@@ -1,5 +1,7 @@
 # Teaching-HEIGVD-SRX-2020-Laboratoire-VPN
 
+Etudiants: Doran Kayoumi & Fabio da Silva Marques
+
 **Ce travail de laboratoire est à faire en équipes de 3 personnes**
 
 **Pour ce travail de laboratoire, il est votre responsabilité de chercher vous-même sur internet, le support du cours ou toute autre source (vous avez aussi le droit de communiquer avec les autres équipes), toute information relative au sujet VPN, le logiciel eve-ng, les routeur Cisco, etc que vous ne comprenez pas !**
@@ -285,7 +287,7 @@ Source:
 
 
 
-On peut voir que la clé *pre-share* utilisé pour l'authentification est `cisco-1`. Cet clé est beaucoup trop petite et trop simple. Il est donc très facile de la casser. 
+On peut voir que la clé *pre-share* utilisé pour l'authentification est `cisco-1`. Cet clé est beaucoup trop simple.
 
 ---
 
@@ -380,16 +382,14 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 
 **Réponse :**  
 
+Nous avons rencontré les warnings suivant:
+
 * Warning! Lifetime value of 2560 KB is lower than the recommended optimum value of 102400 KB
 * Warning! Lifetime value of 300 sec is lower than the recommended optimum value of 900 sec
 
 ![](./images/screens/WS_secure_ping.png)
 
 ![](./images/screens/debug_secure_ping.png)
-
-![](./images/screens/cmd_secure_ping.png)
-
-
 
 Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
 Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi ça sert
@@ -401,6 +401,22 @@ Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi �
 ---
 
 **Réponse :**  
+
+**IKE**:
+
+* **lifetime**: Durée de vie d'une association de sécurité de la phase 1.
+* **keepalive**: Durée entre chaque intervalles de contrôles DPD (Dead Peer Detection)
+
+**IPsec**:
+
+* **lifetime**: Durée de vie d'une association de sécurité de la phase 2.
+* **idle-time**: temps d'`inactivité` d'une SA avant qu'elle ne soit supprimé
+
+Source:
+
+[Doc cisco IPsec](https://www.cisco.com/c/en/us/td/docs/ios/12_2/security/command/reference/srfipsec.html#wp1017619)
+
+https://wiki.mikrotik.com/wiki/Manual:IP/IPsec
 
 ---
 
@@ -416,14 +432,37 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
----
+Les protocoles VPN mis en oeuvre pour ce laboratoire sont `IKE` pour la négociations des **SA** et `ESP` pour le'encapsulation des paquets.
 
+En executant la commande suivante, on remarque que l'on a une policy `isakmp` configuré et que `isakmp` fait partie de `IKE` (c.f. Q4 pour l'output de la commande sur les 2 routeurs).
+
+```
+show crypto isakmp policy
+```
+
+Pour déterminé l'utilisation d'`ESP`, on peut executer la commande suivante, et voir qu'il l'utilise.
+
+```
+show crypto ipsec transfer-set
+```
+
+![](./images/screens/transfer_set.png)
+
+---
 
 **Question 9: Expliquez si c’est un mode tunnel ou transport.**
 
 ---
 
-**Réponse :**  
+**Réponse :** 
+
+Le VPN que nous avons mis en place, utilise le mode tunnel. On peut le voir si on execute la commande suivante (c.f. Q8 pour l'output de la commande):
+
+```
+show crypto ipsec transfer-set
+```
+
+
 
 ---
 
@@ -434,6 +473,12 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
+![](./images/screens/tunnel_encrypted.png)
+
+Les parties chiffrées du paquets sont l'entête IP originale, les données ainsi que l'enqueue `ESP`.
+
+L'algorithme correspondant est `AES` 192 bits.
+
 ---
 
 
@@ -443,6 +488,12 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
+![](./images/screens/auth_part.png)
+
+Les parties authentifiées sont, l'entête ESP, l'entête IP originale, les données et l'enqueue ESP.
+
+L'algorithme correspondant est `HMAC` avec `SHA-1`
+
 ---
 
 
@@ -451,5 +502,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
+
+
 
 ---
