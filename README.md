@@ -502,9 +502,8 @@ L'algorithme correspondant est `HMAC` avec `SHA-1`
 ---
 
 **Réponse :**  
-
 Pour protéger l'intégrité d'un paquet il faut vérifier la checksum qui se trouve à la fin du paquet.
 Et comme on a des paquets authentifiés ça implique que l'intégrité est respectée se qui veut dire l'ensemble du paquet est protégé.
-Algorithmes utilisés: `HMAC` acec `SHA-1`
+Algorithmes utilisés: `HMAC` avec `SHA-1`
 
 ---
