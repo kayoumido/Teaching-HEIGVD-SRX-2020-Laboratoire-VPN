@@ -1,6 +1,6 @@
 # Teaching-HEIGVD-SRX-2020-Laboratoire-VPN
 
-Etudiants: Doran Kayoumi & Fabio da Silva Marques
+> Etudiants: Doran Kayoumi & Fabio da Silva Marques
 
 **Ce travail de laboratoire est à faire en équipes de 3 personnes**
 
@@ -472,12 +472,11 @@ show crypto ipsec transfer-set
 ---
 
 **Réponse :**  
-
-![](./images/screens/tunnel_encrypted.png)
-
 Les parties chiffrées du paquet sont l'entête IP originale, les données ainsi que l'enqueue `ESP`.
 
 L'algorithme correspondant est `AES` 192 bits.
+
+![](./images/screens/tunnel_encrypted.png)
 
 ---
 
@@ -487,12 +486,11 @@ L'algorithme correspondant est `AES` 192 bits.
 ---
 
 **Réponse :**  
-
-![](./images/screens/auth_part.png)
-
 Les parties authentifiées sont, l'entête ESP, l'entête IP originale, les données et l'enqueue ESP.
 
 L'algorithme correspondant est `HMAC` avec `SHA-1`
+
+![](./images/screens/auth_part.png)
 
 ---
 
