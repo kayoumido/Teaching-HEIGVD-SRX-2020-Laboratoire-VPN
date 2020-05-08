@@ -462,8 +462,6 @@ Le VPN que nous avons mis en place, utilise le mode tunnel. On peut le voir si o
 show crypto ipsec transfer-set
 ```
 
-
-
 ---
 
 
@@ -476,10 +474,7 @@ Les parties chiffrées du paquet sont l'entête IP originale, les données ainsi
 
 L'algorithme correspondant est `AES` 192 bits.
 
-![](./images/screens/tunnel_encrypted.png)
-
 ---
-
 
 **Question 11: Expliquez quelles sont les parties du paquet qui sont authentifiées. Donnez l’algorithme cryptographique correspondant.**
 
@@ -489,8 +484,6 @@ L'algorithme correspondant est `AES` 192 bits.
 Les parties authentifiées sont, l'entête ESP, l'entête IP originale, les données et l'enqueue ESP.
 
 L'algorithme correspondant est `HMAC` avec `SHA-1`
-
-![](./images/screens/auth_part.png)
 
 ---
 
