@@ -258,9 +258,9 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 L'algorithme de hashage `md5` étant cassé, il est plutôt recommandé d'utiliser un algorithme `sha`. 
 
-Le chiffrement par bloc `3DES` est un algorithme historique dont la sécurité est toujours acceptable aujourd'hui mais il est plutôt recommendé d'utilisé d'autre algorithme tels qu'`AES`.
+Le chiffrement par bloc `3DES` est un algorithme historique dont la sécurité est toujours acceptable aujourd'hui mais il est plutôt recommandé d'utiliser d'autres algorithmes tels qu'`AES`.
 
-L'utilisation de l'algorithme étant une bonne chose, il y a un tout de même un problème avec le choix du groupe `Diffie-Hellman`. Le groupe `5` ne fournisse pas un bon niveau de sécurité. De nos jour, le groupe minimum recommandé est le `14`.
+L'utilisation de l'algorithme étant une bonne chose, il y a tout de même un problème avec le choix du groupe `Diffie-Hellman`. Le groupe `5` ne fournis pas un bon niveau de sécurité. De nos jour, le groupe minimum recommandé est le `14`.
 
 La policy avec la plus haute priorité du routeur `R2`, c-à-d la policy utilisant l'algorithme `3DES`, ne sera jamais utilisé lors d'une communication avec le routeur `R1` car celui-ci n'a pas de policy utilisant l'algorithme `3DES`.
 
@@ -288,7 +288,7 @@ Source:
 
 
 
-On peut voir que la clé *pre-share* utilisé pour l'authentification est `cisco-1`. Cet clé est beaucoup trop simple.
+On peut voir que la clé *pre-share* utilisée pour l'authentification est `cisco-1`. Cette clé est beaucoup trop simple.
 
 ---
 
@@ -392,7 +392,7 @@ Nous avons rencontré les warnings suivant:
 
 ![](./images/screens/debug_secure_ping.png)
 
-Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
+Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait optimale.
 
 ---
 
@@ -410,7 +410,7 @@ Lorsqu'on défini la taille pour le changement de SA on a un message qui nous di
 **IPsec**:
 
 * **lifetime**: Durée de vie d'une association de sécurité de la phase 2.
-* **idle-time**: temps d'`inactivité` d'une SA avant qu'elle ne soit supprimé
+* **idle-time**: temps d'`inactivité` d'une SA avant qu'elle ne soit supprimée
 
 Source:
 
@@ -432,15 +432,15 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
-Les protocoles VPN mis en oeuvre pour ce laboratoire sont `IKE` pour la négociations des **SA** et `ESP` pour le'encapsulation des paquets.
+Les protocoles VPN mis en oeuvre pour ce laboratoire sont `IKE` pour la négociation des **SA** et `ESP` pour l'encapsulation des paquets.
 
-En executant la commande suivante, on remarque que l'on a une policy `isakmp` configuré et que `isakmp` fait partie de `IKE` (c.f. Q4 pour l'output de la commande sur les 2 routeurs).
+En exécutant la commande suivante, on remarque qu'on a une policy `isakmp` configurée et que `isakmp` fait partie de `IKE` (c.f. Q4 pour l'output de la commande sur les 2 routeurs).
 
 ```
 show crypto isakmp policy
 ```
 
-Pour déterminé l'utilisation d'`ESP`, on peut executer la commande suivante, et voir qu'il l'utilise.
+Pour déterminer l'utilisation d'`ESP`, on peut exécuter la commande suivante, et voir qu'il l'utilise.
 
 ```
 show crypto ipsec transfer-set
@@ -475,7 +475,7 @@ show crypto ipsec transfer-set
 
 ![](./images/screens/tunnel_encrypted.png)
 
-Les parties chiffrées du paquets sont l'entête IP originale, les données ainsi que l'enqueue `ESP`.
+Les parties chiffrées du paquet sont l'entête IP originale, les données ainsi que l'enqueue `ESP`.
 
 L'algorithme correspondant est `AES` 192 bits.
 
