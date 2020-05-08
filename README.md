@@ -393,7 +393,6 @@ Nous avons rencontré les warnings suivant:
 ![](./images/screens/debug_secure_ping.png)
 
 Lorsqu'on défini la taille pour le changement de SA on a un message qui nous dit que la taille n'est pas optimale et qu'une taille plus grande serait mieux
-Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi ça sert
 
 ---
 
@@ -406,7 +405,7 @@ Il y a une configuration en plus pour R2: `mode tunnel` TODO: expliquer a quoi �
 **IKE**:
 
 * **lifetime**: Durée de vie d'une association de sécurité de la phase 1.
-* **keepalive**: Durée entre chaque intervalles de contrôles DPD (Dead Peer Detection)
+* **keepalive**: Durée entre chaque intervalle de contrôle DPD (Dead Peer Detection)
 
 **IPsec**:
 
@@ -504,6 +503,7 @@ L'algorithme correspondant est `HMAC` avec `SHA-1`
 
 **Réponse :**  
 
-
-
+Pour protéger l'intégrité d'un paquet il faut vérifier la checksum qui se trouve à la fin du paquet.
+Et comme on a des paquets authentifiés ça implique que l'intégrité est respectée se qui veut dire l'ensemble du paquet est protégé.
+Algorithmes utilisés: `HMAC` acec `SHA-1`
 ---
